@@ -25,6 +25,8 @@ echo $rec;
 shell_exec('gpio -g mode 27 out');
 shell_exec('gpio -g mode 2 out');
 shell_exec('gpio -g mode 3 out');
+shell_exec('gpio -g mode 23 out');
+shell_exec('gpio -g mode 24 out');
 shell_exec('gpio -g mode 18 pwm');
 for($x=0; $x<$rec; $x++)
 {
@@ -38,21 +40,46 @@ switch ($status)
 	case "stop":
 		shell_exec('gpio -g write 2 0');
 		shell_exec('gpio -g write 3 0');
+		shell_exec('gpio -g write 23 0');
+		shell_exec('gpio -g write 24 0');
 		echo "<h5>STOP!!</h5>";
 		break;
 	case "roll":
 		shell_exec('gpio -g write 2 1');
 		shell_exec('gpio -g write 3 0');
+		shell_exec('gpio -g write 23 1');
+		shell_exec('gpio -g write 24 0');
 		echo "<h5>ROLL!!</h5>";
 		break;
 	case "back_roll":
 		shell_exec('gpio -g write 2 0');
 		shell_exec('gpio -g write 3 1');
+		shell_exec('gpio -g write 23 0');
+		shell_exec('gpio -g write 24 1');
 		echo "<h5>BACK_ROLL!!</h5>";
 		break;
+
+	case "turn_right":
+		shell_exec('gpio -g write 2 1');
+		shell_exec('gpio -g write 3 0');
+		shell_exec('gpio -g write 23 0');
+		shell_exec('gpio -g write 24 0');
+		echo "<h5>TURN_RIGHT</h5>";
+		break;
+
+	case "turn_left":
+		shell_exec('gpio -g write 2 0');
+		shell_exec('gpio -g write 3 0');
+		shell_exec('gpio -g write 23 1');
+		shell_exec('gpio -g write 24 0');
+		echo "<h5>TURN_LEFT</h5>";
+		break;
+
 	case "brake":
 		shell_exec('gpio -g write 2 1');
 		shell_exec('gpio -g write 3 1');
+		shell_exec('gpio -g write 23 1');
+		shell_exec('gpio -g write 24 1');
 		echo "<h5>BREAKE</h5>";
 		break;
 	case "set":
@@ -67,6 +94,8 @@ echo "<input type=\"range\" min=500 max=1023 step=1 value=" . (isset($speed) ? $
 echo "<input type=\"submit\" value=\"set\" name=\"mortor\" />\n";
 echo "<input type=\"submit\" value=\"stop\" name=\"mortor\" />";
 echo "<input type=\"submit\" value=\"roll\" name=\"mortor\" />";
+echo "<input type=\"submit\" value=\"turn_right\" name=\"mortor\" />";
+echo "<input type=\"submit\" value=\"turn_left\" name=\"mortor\" />";
 echo "<input type=\"submit\" value=\"back_roll\" name=\"mortor\" />";
 echo "<input type=\"submit\" value=\"brake\" name=\"mortor\" />";
 echo "</form>\n";
