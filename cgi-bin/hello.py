@@ -14,3 +14,10 @@ if "1" == item:
 	print('<h2>Checked!</h2>')
 else:
 	print('<h2>Un Checked!</h2>')
+
+redirectURL = "http://localhost:8000/index.html"
+print('<html>')
+print('  <head>')
+print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
+print('  </head>')
+print('</html>')
