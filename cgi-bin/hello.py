@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 import cgi
 form = cgi.FieldStorage()
 print('Content-Type: text/html; charset=utf-8')
@@ -15,7 +15,7 @@ if "1" == item:
 else:
 	print('<h2>Un Checked!</h2>')
 
-redirectURL = "http://localhost:8000/index.html"
+redirectURL = "localhost:8000/index.html"
 print('<html>')
 print('  <head>')
 print('    <meta http-equiv="refresh" content="0;url='+str(redirectURL)+'" />') 
