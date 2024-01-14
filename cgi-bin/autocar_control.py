@@ -12,26 +12,36 @@ def main(control, speed):
 	pi.hardware_PWM(18, 490, speed)
 
 	if ( control == 0 ):
-			pi.write(2, 0)
-			pi.write(3, 0)
-			pi.write(23, 0)
-			pi.write(24, 0)
+			pi.hardware_PWM(18, 490, sys.argv[2])
 	elif ( control == 1 ):
 			pi.write(2, 0)
+			pi.write(3, 0)
+			pi.write(23, 0)
+			pi.write(24, 0)
+	elif ( control == 2 ):
+			pi.write(2, 0)
 			pi.write(3, 1)
 			pi.write(23, 0)
 			pi.write(24, 1)
-	elif ( control == 2 ):
+	elif ( control == 3 ):
+			pi.write(2, 0)
+			pi.write(3, 0)
+			pi.write(23, 0)
+			pi.write(24, 1)
+	elif ( control == 4 ):
+			pi.write(2, 0)
+			pi.write(3, 1)
+			pi.write(23, 0)
+			pi.write(24, 0)
+	elif ( control == 5 ):
 			pi.write(2, 1)
 			pi.write(3, 0)
 			pi.write(23, 1)
 			pi.write(24, 0)
-	elif ( control == 3 ):
+	elif ( control == 6 ):
 			pi.write(2, 1)
 			pi.write(3, 1)
 			pi.write(23, 1)
 			pi.write(24, 1)
-	elif ( control == 4 ):
-			pi.hardware_PWM(18, 490, sys.argv[2])
 
 	pi.stop()
